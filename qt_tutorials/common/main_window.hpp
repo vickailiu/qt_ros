@@ -12,12 +12,12 @@
 ** Includes
 *****************************************************************************/
 
-#include <QtGui/QMainWindow>
+#include <QtWidgets>
 
-#ifndef Q_MOC_RUN
-#include "common/ui_main_window.h"
+//#ifndef Q_MOC_RUN
+//#include "common/ui_main_window.h"
 #include "qnode.hpp"
-#endif
+//#endif
 
 /*****************************************************************************
 ** Interface [MainWindow]
@@ -25,6 +25,10 @@
 /**
  * @brief Qt central, all operations relating to the view part here.
  */
+namespace Ui {
+class MainWindowDesign;
+}
+
 class MainWindow : public QMainWindow {
 Q_OBJECT
 
@@ -51,7 +55,7 @@ public Q_SLOTS:
     void updateLoggingView(); // no idea why this can't connect automatically
 
 private:
-    Ui::MainWindowDesign ui;
+    Ui::MainWindowDesign* ui;
     QNode *qnode;
 };
 

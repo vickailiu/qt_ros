@@ -2,8 +2,10 @@
 # CMake
 ##############################################################################
 
-cmake_minimum_required(VERSION 2.8.0)
+cmake_minimum_required(VERSION 3.1)
 project(qt_tutorials)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 find_package(catkin)
 
 ##############################################################################
@@ -12,16 +14,16 @@ find_package(catkin)
 
 # These find_package calls setup catkin_INCLUDE_DIRS and ROS_LIBRARIES and 
 # all the component variables too (e.g. roscpp_INCLUDE_DIR?)
-find_package(catkin REQUIRED COMPONENTS qt_build message_generation std_msgs roscpp)
-include_directories(${catkin_INCLUDE_DIRS})
+find_package(catkin REQUIRED COMPONENTS message_generation std_msgs roscpp)
+include_directories(${catkin_INCLUDE_DIRS} ${CATKIN_GLOBAL_INCLUDE_DESTINATION})
 
 ##############################################################################
 # Qt Environment
 ##############################################################################
 
-# this comes from qt_build's qt-ros.cmake which is automatically 
-# included via the dependency call in manifest.xml
-rosbuild_prepare_qt4(QtCore QtGui) # Add the appropriate components to the component list here
+find_package(Qt5Widgets REQUIRED)
+find_package(Qt5Core REQUIRED)
+include_directories(${Qt5Widgets_INCLUDE_DIRS})
 
 ##############################################################################
 # Services

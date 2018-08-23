@@ -10,7 +10,7 @@
 *****************************************************************************/
 
 #include <QtGui>
-#include <QApplication>
+#include <QtWidgets>
 #include "../common/main_window.hpp"
 #include "qadd.hpp"
 
